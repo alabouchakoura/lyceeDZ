@@ -3,10 +3,10 @@
 // USED BY: user.controller.js
 import  pool  from "../config/db.js";
 
-export const createUser = async (name, email, password, role) => {
+export const createUser = async (name, email,age, password, role) => {
   await pool.query(
-    "INSERT INTO users (name, email, password, role) VALUES (?, ?, ?, ?)",
-    [name, email, password, role]
+    "INSERT INTO users (name, email,age,password, role) VALUES (?,?,?,?,?)",
+    [name, email, age,password, role]
   );
 };
 
