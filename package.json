@@ -1,0 +1,29 @@
+{
+  "name": "lyceedz",
+  "version": "1.0.0",
+  "description": "high school management backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  ,"dev": "nodemon server.js"},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alabouchakoura/lyceeDZ.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alabouchakoura/lyceeDZ/issues"
+  },
+  "homepage": "https://github.com/alabouchakoura/lyceeDZ#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mysql2": "^3.22.0",
+    "nodemon": "^3.1.14"
+  }
+}
