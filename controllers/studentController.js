@@ -15,7 +15,7 @@ export const getStudentById=async(req,res)=>{
   try {
    const { id }=req.params;
    const student=await studentById(id);
-res.json(student); 
+   res.json(student); 
   }catch (error) {
       res.status(404).json({"error":"no student"});
   }

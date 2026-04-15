@@ -5,8 +5,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { createUser, findUserByEmail } from "../services/userService.js";
 import {createStudent} from "../services/studentService.js";
-const SECRET = "secretkey";
-
+const SECRET=process.env.SECRET;
 export const register = async (req, res) => {
   try {
      const { name, email, age,password } = req.body;
@@ -36,6 +35,6 @@ export const login = async (req, res) => {
   const token = jwt.sign({ id: user.id, role: user.role }, SECRET);
   res.json({ token }); 
   } catch (error) {
-    res.status(500).json({error:"internal server erroer "});
+    res.status(500).json({error:"internal server error "});
   }
 };
