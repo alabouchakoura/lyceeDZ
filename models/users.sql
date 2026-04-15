@@ -7,5 +7,6 @@ CREATE TABLE users(
     email VARCHAR(100) UNIQUE,
     age INT,
     password VARCHAR(255),
-    role ENUM('student','teacher','admin')
+    role ENUM('student','teacher','admin'),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
  );
