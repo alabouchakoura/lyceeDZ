@@ -31,13 +31,12 @@ Defined in the `models/` folder. It contains two main entities: `users` and `stu
 
 ### Users Table (`models/users.sql`)
 ```sql
-CREATE TABLE users(
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(100),
-    email VARCHAR(100) UNIQUE,
-    age INT,
-    password VARCHAR(255),
-    role ENUM('student','teacher','admin')
+CREATE TABLE students (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(100),
+  age INT,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 ```
 
@@ -46,7 +45,9 @@ CREATE TABLE users(
 CREATE TABLE students (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(100),
-  age INT
+  age INT,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 ```
 
@@ -60,8 +61,8 @@ CREATE TABLE students (
 Accessing these endpoints requires an Authorization header containing a valid JWT (`Bearer <token>`).
 
 - `GET /api/students/`: Fetches all students. (Allowed Roles: `teacher`, `admin`)
-- `POST /api/students/`: Adds a new student record manually. (Allowed Roles: `teacher`, `admin`)
-- `PUT /api/students/:id`: Updates an existing student by ID. (Allowed Roles: `teacher`, `admin`)
+- `POST /api/students/add`: Adds a new student record manually. (Allowed Roles: `teacher`, `admin`)
+- `PUT /api/students/update/:id`: Updates an existing student by ID. (Allowed Roles: `teacher`, `admin`)
 - `DELETE /api/students/:id`: Removes a student from the database. (Allowed Roles: `admin` ONLY)
 
 ## Middlewares
