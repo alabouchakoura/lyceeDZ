@@ -7,7 +7,10 @@ export const getStudents = async () => {
   const [rows] = await pool.query("SELECT * FROM students");
   return rows;
 };
-
+export const studentById = async (id) => {
+  const [rows] = await pool.query("SELECT * FROM students where id=?",[id]);
+  return rows[0];
+};
 export const createStudent = async (name, age) => {
   await pool.query("INSERT INTO students (name, age) VALUES (?, ?)", [name, age]);
 };

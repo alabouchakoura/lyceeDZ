@@ -1,6 +1,12 @@
-import bcrypt from "bcryptjs";
-const password="123";
-const hashed = await bcrypt.hash(password, 10);
-const valid = await bcrypt.compare(password, hashed);
-console.log(hashed);
-console.log(valid);
+import 'dotenv/config';
+import {studentById} from "./services/studentService.js"
+import pool from "./config/db.js";
+try {
+    const result = await studentById(9);
+    console.log(result);
+} catch (error) {
+    console.log(error);
+}
+finally{
+    pool.end();
+}

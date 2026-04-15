@@ -14,8 +14,6 @@ export const register = async (req, res) => {
   await createUser(name, email, age,hashed, "student"); // only students register
   await createStudent(name,age);
   res.json({ message: "Student registered" });
-
-    res.status(500).json({error:"existing email"});
 };
 
 export const login = async (req, res) => {
@@ -29,6 +27,5 @@ export const login = async (req, res) => {
   if(!valid){return res.status(401).json({ message: "Wrong password" });
   }
   const token = jwt.sign({ id: user.id, role: user.role }, SECRET);
-
   res.json({ token });
 };

@@ -1,13 +1,17 @@
 // ROLE: Handle HTTP requests for student CRUD.
 // WHY: Converts request → service calls → response.
 // CALLS: student.service.js
-import { getStudents, createStudent, updateStudent, deleteStudent } from "../services/studentService.js";
+import { getStudents, createStudent, updateStudent, deleteStudent, studentById } from "../services/studentService.js";
 
 export const getAllStudents = async (req, res) => {
   const students = await getStudents();
   res.json(students);
 };
-
+export const getStudentById=async(req,res)=>{
+const { id }=req.params;
+const student=await studentById(id);
+res.json(student);
+}
 export const addStudent = async (req, res) => {
   const { name, age } = req.body;
   await createStudent(name, age);
