@@ -31,13 +31,15 @@ Defined in the `models/` folder. It contains two main entities: `users` and `stu
 
 ### Users Table (`models/users.sql`)
 ```sql
-CREATE TABLE students (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(100),
-  age INT,
-  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-);
+CREATE TABLE users(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    age INT,
+    password VARCHAR(255),
+    role ENUM('student','teacher','admin'),
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+ );
 ```
 
 ### Students Table (`models/students.sql`)
