@@ -54,7 +54,7 @@ erDiagram
         int id PK
         int teacher_id FK
         varchar name
-        varchar level
+        enum level "values defined at build time"
         timestamp createdAt
     }
 
@@ -68,6 +68,11 @@ erDiagram
         varchar name
         varchar description
         timestamp createdAt
+    }
+
+    LEVEL_SUBJECTS {
+        enum level FK
+        int subject_id FK
     }
 
     GRADES {
@@ -87,6 +92,8 @@ erDiagram
     STUDENTS ||--o{ CLASS_STUDENTS : "enrolled in"
     STUDENTS ||--o{ GRADES : "receives"
     SUBJECTS ||--o{ GRADES : "assessed by"
+    SUBJECTS ||--o{ LEVEL_SUBJECTS : "assigned to"
+    CLASSES }o--o{ LEVEL_SUBJECTS : "level determines subjects"
 ```
 
 ---
