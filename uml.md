@@ -15,7 +15,6 @@ erDiagram
         varchar card_url
         timestamp createdAt
     }
-
     REFRESH_TOKENS {
         int id PK
         int user_id FK
@@ -23,7 +22,6 @@ erDiagram
         timestamp expiresAt
         timestamp createdAt
     }
-
     PASSWORD_RESET_TOKENS {
         int id PK
         int user_id FK
@@ -32,24 +30,19 @@ erDiagram
         timestamp expiresAt
         timestamp createdAt
     }
-
     STUDENTS {
         int id PK
         int user_id FK
-        varchar name
-        int age
+        int class_id FK
         timestamp createdAt
         timestamp updatedAt
     }
-
     TEACHERS {
         int id PK
         int user_id FK
-        varchar name
         varchar specialty
         timestamp createdAt
     }
-
     CLASSES {
         int id PK
         int teacher_id FK
@@ -57,24 +50,16 @@ erDiagram
         enum level "values defined at build time"
         timestamp createdAt
     }
-
-    CLASS_STUDENTS {
-        int class_id FK
-        int student_id FK
-    }
-
     SUBJECTS {
         int id PK
         varchar name
         varchar description
         timestamp createdAt
     }
-
     LEVEL_SUBJECTS {
         enum level FK
         int subject_id FK
     }
-
     GRADES {
         int id PK
         int student_id FK
@@ -82,14 +67,12 @@ erDiagram
         decimal value
         timestamp recordedAt
     }
-
     USERS ||--o| STUDENTS : "has profile"
     USERS ||--o| TEACHERS : "has profile"
     USERS ||--o{ REFRESH_TOKENS : "owns"
     USERS ||--o{ PASSWORD_RESET_TOKENS : "requests"
     TEACHERS ||--o{ CLASSES : "teaches"
-    CLASSES ||--o{ CLASS_STUDENTS : "contains"
-    STUDENTS ||--o{ CLASS_STUDENTS : "enrolled in"
+    CLASSES ||--o{ STUDENTS : "contains"
     STUDENTS ||--o{ GRADES : "receives"
     SUBJECTS ||--o{ GRADES : "assessed by"
     SUBJECTS ||--o{ LEVEL_SUBJECTS : "assigned to"
